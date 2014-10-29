@@ -1,0 +1,800 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>The Daily Quiz</title>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body id="body">
+
+    <!--
+        ------  ------  |-----    /\   |   /      
+        |     ) |     ) |        /  \  |  /
+        ------  |-----  |-----  /----\ ---
+        |     ) |   \   |       |    | |  \
+        |____)  |    \  |_____  |    | |   \
+    -->
+
+    <div class="container" id="landingPage">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="page-header">
+                    <h1>
+                        TDQ <small>The Daily Quiz</small>
+                    </h1>
+                </div>
+
+                <div class="tabbable" id="tabs-963818">
+                    <ul class="nav nav-tabs">
+
+                        <li class="dropdown pull-right">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Options<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a onclick="pageChangeToHome();" class="hidden">Home</a>
+                                </li>
+                                <li>
+                                    <a onclick="pageChangeToQuiz();">Quizzes</a>
+                                </li>
+                                <li>
+                                    <li class="divider">
+                                </li>
+                                <li>
+                                    <a id="modal-8" href="#modal-container-8" data-toggle="modal">Change Background Color</a>
+                                </li>
+                                <li>
+<!--Administrative options for later use-->
+                                    <a class="hidden" onclick="pageChangeToAdmin();">Administrative</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="jumbotron">
+                    <h1>
+                        Welcome to TDQ
+                    </h1>
+                    <p>
+                        When you are ready to begin, press "Begin" to select a quiz.
+                    </p>
+                    <p>
+                        <a class="btn btn-primary btn-large" onclick="pageChangeToQuiz();">Begin</a>
+                    </p>
+                </div>
+
+                <div class="modal fade" id="modal-container-8" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4>The Daily Quiz</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h2 class="modal-title" id="myModalLabel">
+                                    Color Selecter
+                                </h2>
+                                <input class="colorer" type="color" name="chosenColor" id="colorSelecter1" value="000000"/>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" onclick="changeColor();" data-dismiss="modal">Ok</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--
+        ------  ------  |-----    /\   |   /
+        |     ) |     ) |        /  \  |  /
+        ------  |-----  |-----  /----\ ---
+        |     ) |   \   |       |    | |  \
+        |____)  |    \  |_____  |    | |   \
+    -->
+
+
+    <div class="container hidden" id="quizPage" style="background-color:inherit">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="page-header">
+                    <h1>
+                        <span onclick="pageChangeToHome()">TDQ <small>The Daily Quiz</small></span><span class="pull-right"><small id="quizName"><strong>Quiz Selecter</strong></small></span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+
+                <div class="tabbable" id="tabs-963818">
+                    <ul class="nav nav-tabs">
+
+                        <li id="question1-Nav-li" class="active">
+                            <a data-slide-to="0" data-target="#carousel-623693" data-toggle="tab" id="navTab1">Quiz 1</a>
+                        </li>
+
+                        <li id="question2-Nav-li">
+                            <a data-slide-to="1" data-target="#carousel-623693" data-toggle="tab" id="navTab2">Quiz 2</a>
+                        </li>
+
+                        <li id="question3-Nav-li">
+                            <a data-slide-to="2" data-target="#carousel-623693" data-toggle="tab" id="navTab3">Quiz 3</a>
+                        </li>
+
+                        <li id="question4-Nav-li">
+                            <a data-slide-to="3" data-target="#carousel-623693" data-toggle="tab" id="navTab4">Quiz 4</a>
+                        </li>
+
+                        <li id="question5-Nav-li">
+                            <a data-slide-to="4" data-target="#carousel-623693" data-toggle="tab" id="navTab5">Quiz 5</a>
+                        </li>
+
+                        <li id="randomer">
+                            <a data-slide-to="x" data-target="#carousel-623693" data-toggle="tab" id="navTab6" onclick="resetter();">Randomize</a>
+                            <a data-slide-to="0" class="hidden" data-target="#carousel-623693" data-toggle="tab" onclick="resetter();" id="navTab6a">Randomize</a>
+                            <a data-slide-to="1" class="hidden" data-target="#carousel-623693" data-toggle="tab" onclick="resetter();" id="navTab6b">Randomize</a>
+                            <a data-slide-to="2" class="hidden" data-target="#carousel-623693" data-toggle="tab" onclick="resetter();" id="navTab6c">Randomize</a>
+                            <a data-slide-to="3" class="hidden" data-target="#carousel-623693" data-toggle="tab" onclick="resetter();" id="navTab6d">Randomize</a>
+                            <a data-slide-to="4" class="hidden" data-target="#carousel-623693" data-toggle="tab" onclick="resetter();" id="navTab6e">Randomize</a>
+                        </li>
+
+                        <li class="dropdown pull-right">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Options<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a onclick="pageChangeToHome()">Home</a>
+                                </li>
+                                <li>
+                                    <a class="hidden" onclick="setUpForSelecter()">Quizzes</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a id="modal-7" href="#modal-container-7" data-toggle="modal">Change Background Color</a>
+
+                                </li>
+                                <li>
+<!--Add administrative features at later time-->
+                                    <a class="hidden" href="z_admin.html">Administrative</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="carousel slide" id="carousel-623693">
+
+                    <div class="modal fade" id="modal-container-7" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4>The Daily Quiz</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h2 class="modal-title" id="myModalLabel">
+                                        Color Selecter
+                                    </h2>
+                                    <input class="colorer" type="color" name="chosenColor" id="colorSelecter" value="000000" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" onclick="changeColor();" data-dismiss="modal">Ok</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <ol class="carousel-indicators">
+                        <li data-slide-to="0" data-target="#carousel-623693" id="question1-Car-li">
+                        </li>
+                        <li data-slide-to="1" data-target="#carousel-623693" id="question2-Car-li">
+                        </li>
+                        <li data-slide-to="2" data-target="#carousel-623693" id="question3-Car-li">
+                        </li>
+                        <li data-slide-to="3" data-target="#carousel-623693" id="question4-Car-li">
+                        </li>
+                        <li data-slide-to="4" data-target="#carousel-623693" id="question5-Car-li">
+                        </li>
+                    </ol>
+
+                    <div class="carousel-inner">
+
+                        <div class="item active" id="question1-Car-div">
+                            <img src="../images/whitePic.png" class="carousel-inner" />
+                                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">
+                                    <h1 style="text-align:center" id="loc1"></h1>
+
+                                    <p id="location1" style="color:black"></p>
+
+                                    <p id="buttonLocation">
+                                        <div class="input-group" style="color:black">
+                                            <input type="text" class="form-control hidden" style="display:inline" required placeholder="Answer" id="q1Answer" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="submit btn btn-default hidden" onclick="checker1();" data-slide-to="1" data-target="#carousel-623693" id="quizSubmitButton1">Submit</button>
+                                            </span>
+                                        </div>
+                                        <button type="button" class="takeit btn btn-default" onclick="populateQuiz1(); setUpForQuiz(); adjuster();" id="quizSelectButton1" data-slide-to="0" data-target="#carousel-623693"> Take It!</button>
+                                    </p>
+
+                                </div>
+
+                                <div class="carousel-caption">
+
+                                    <h4 style="color:black;" id="slideHeader1"></h4>
+
+                                </div>
+
+                        </div>
+
+                        <div class="item" id="question2-Car-div">
+                            <img src="../images/whitePic.png" class="carousel-inner" />
+                            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">
+
+                                <h1 style="text-align:center" id="loc2"></h1>
+
+                                <p id="location2" style="color:black"></p>
+
+                                <p id="buttonLocation">
+                                    <div class="input-group" style="color:black">
+                                        <input type="text" class="form-control hidden" style="display:inline" required placeholder="Answer" id="q2Answer" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="submit btn btn-default hidden" onclick="checker2();" data-slide-to="2" data-target="#carousel-623693" id="quizSubmitButton2">Submit</button>
+                                        </span>
+                                    </div>
+                                    <button type="button" class="takeit btn btn-default" onclick="populateQuiz2(); setUpForQuiz(); adjuster();" id="quizSelectButton2" data-slide-to="0" data-target="#carousel-623693"> Take It!</button>
+                                </p>
+
+                            </div>
+
+                            <div class="carousel-caption">
+
+                                <h4 style="color:black;" id="slideHeader2"></h4>
+
+                            </div>
+
+                        </div>
+
+                        <div class="item" id="question3-Car-div">
+                            <img src="../images/whitePic.png" class="carousel-inner" />
+                                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">
+
+                                    <h1 style="text-align:center" id="loc3"></h1>
+
+                                    <p id="location3" style="color:black"></p>
+
+                                    <p id="buttonLocation">
+                                        <div class="input-group" style="color:black">
+                                            <input type="text" class="form-control hidden" style="display:inline" required placeholder="Answer" id="q3Answer" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="submit btn btn-default hidden" onclick="checker3();" data-slide-to="3" data-target="#carousel-623693" id="quizSubmitButton3">Submit</button>
+                                            </span>
+                                        </div>
+                                        <button type="button" class="takeit btn btn-default" onclick="populateQuiz3(); setUpForQuiz(); adjuster();" id="quizSelectButton3" data-slide-to="0" data-target="#carousel-623693"> Take It!</button>
+                                    </p>
+
+                                </div>
+
+                                <div class="carousel-caption">
+
+                                    <h4 style="color:black;" id="slideHeader3"></h4>
+
+                                </div>
+
+                        </div>
+
+                        <div class="item" id="question4-Car-div">
+                            <img src="../images/whitePic.png" class="carousel-inner" />
+                            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">
+
+                                <h1 style="text-align:center" id="loc4"></h1>
+
+                                <p id="location4" style="color:black"></p>
+
+                                <p id="buttonLocation">
+                                    <div class="input-group" style="color:black">
+                                        <input type="text" class="form-control hidden" style="display:inline" required placeholder="Answer" id="q4Answer" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="submit btn btn-default hidden" onclick="checker4();" data-slide-to="4" data-target="#carousel-623693" id="quizSubmitButton4">Submit</button>
+                                        </span>
+                                    </div>
+                                    <button type="button" class="takeit btn btn-default" onclick="populateQuiz4(); setUpForQuiz(); adjuster();" id="quizSelectButton4" data-slide-to="0" data-target="#carousel-623693"> Take It!</button>
+                                </p>
+
+                            </div>
+
+                            <div class="carousel-caption">
+
+                                <h4 style="color:black;" id="slideHeader4"></h4>
+
+                            </div>
+
+                        </div>
+
+                        <div class="item" id="question5-Car-div">
+                            <img src="../images/whitePic.png" class="carousel-inner" />
+                            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">
+
+                                <h1 style="text-align:center" id="loc5"></h1>
+
+                                <p id="location5" style="color:black"></p>
+
+                                <p id="buttonLocation">
+                                    <div class="input-group" style="color:black">
+                                        <input type="text" class="form-control hidden" style="display:inline" required placeholder="Answer" id="q5Answer" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="submit btn btn-default hidden" onclick="checker5();" id="quizSubmitButton5">Submit</button>
+                                        </span>
+                                    </div>
+
+                                    <button type="button" class="takeit btn btn-default" onclick="populateQuiz5(); setUpForQuiz(); adjuster();" id="quizSelectButton5" data-slide-to="0" data-target="#carousel-623693"> Take It!</button>
+                                </p>
+
+                            </div>
+
+                            <div class="carousel-caption">
+
+                                <h4 style="color:black;" id="slideHeader5"></h4>
+
+                            </div>
+
+                        </div>
+
+                    </div> <a class="left carousel-control" onclick="turnerLeft();" href="#carousel-623693" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" onclick="turnerRight();" href="#carousel-623693" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden" id="statButtons">
+            <div class="col-md-12 column">
+                <ul class="nav nav-pills">
+                    <li>
+                        <a id="modal-1" href="#modal-container-1" role="button" class="btn" data-toggle="modal" onclick="updateScores();"> <span class="badge pull-right" id="corModal">0</span> Correct</a>
+
+                        <div class="modal fade" id="modal-container-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4>The Daily Quiz</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h2 class="modal-title" id="myModalLabel">
+                                            You have gotten <span id="numCorrect"></span> correct!
+                                        </h2>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                    <li>
+                        <a id="modal-2" href="#modal-container-2" role="button" class="btn" data-toggle="modal" onclick="updateScores();"> <span class="badge pull-right" id="incorModal">0</span> Incorrect</a>
+
+                        <div class="modal fade" id="modal-container-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4>The Daily Quiz</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h2 class="modal-title" id="myModalLabel">
+                                            You have gotten <span id="numIncorrect"></span> incorrect!
+                                        </h2>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                    <li>
+                        <a id="modal-3" href="#modal-container-3" role="button" class="btn" data-toggle="modal" onclick="updateScores();"><span class="badge pull-right" id="pctCorModal">100</span> PCT</a>
+
+                        <div class="modal fade" id="modal-container-3" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4>The Daily Quiz</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h2 class="modal-title" id="myModalLabel">
+                                            You're at about <span id="pctCorrect">TEST</span> %
+                                        </h2>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </li>
+                </ul>
+            
+                <div class="modal fade" id="modal-container-4" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4>The Daily Quiz</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h1 class="modal-title" id="myModalLabel" style="text-align:center">
+                                    Correct!
+                                </h1>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" onclick="updateScores();" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal fade" id="modal-container-5" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4>The Daily Quiz</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h1 class="modal-title" id="myModalLabel" style="text-align:center">
+                                    Inorrect!
+                                </h1>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" onclick="updateScores();" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal fade" id="modal-container-6" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4>The Daily Quiz</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h2 class="modal-title" id="myModalLabel">
+                                    You scored <span id="finalPctCorrect">TEST</span> %
+                                </h2>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" onclick="clearer(); setUpForSelecter();" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+           
+
+            
+            </div>
+        </div>
+
+    </div>
+
+    <!--
+        ------  ------  |-----    /\   |   /
+        |     ) |     ) |        /  \  |  /
+        ------  |-----  |-----  /----\ ---
+        |     ) |   \   |       |    | |  \
+        |____)  |    \  |_____  |    | |   \
+    -->
+
+
+    <div class="container hidden" id="adminPage">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="page-header">
+                    <h1>
+                        <span onclick="window.location.href='_index.html'">TDQ <small>The Daily Quiz</small></span><span class="pull-right"><small><strong>Administration</strong></small></span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-6 column">
+
+                <div class="tabbable" id="tabs-963818">
+                    <ul class="nav nav-tabs">
+
+                        <li id="question1-Nav-li" class="active">
+                            <a data-slide-to="0" data-target="#carousel-623693" data-toggle="tab">Quiz 1</a>
+                        </li>
+
+                        <li id="question2-Nav-li">
+                            <a data-slide-to="1" data-target="#carousel-623693" data-toggle="tab">Quiz 2</a>
+                        </li>
+
+                        <li id="question3-Nav-li">
+                            <a data-slide-to="2" data-target="#carousel-623693" data-toggle="tab">Quiz 3</a>
+                        </li>
+
+                        <li id="question4-Nav-li">
+                            <a data-slide-to="3" data-target="#carousel-623693" data-toggle="tab">Quiz 4</a>
+                        </li>
+
+                        <li id="question5-Nav-li">
+                            <a data-slide-to="4" data-target="#carousel-623693" data-toggle="tab">Quiz 5</a>
+                        </li>
+
+                        <li class="dropdown pull-right">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Options<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="_index.html">Home</a>
+                                </li>
+                                <li>
+                                    <a href="a_quizSelector.html">Quizzes</a>
+                                </li>
+                                <li class="hidden">
+                                </li>
+                                <li class="hidden">
+                                    <a href="z_admin.html">Administrative</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="carousel slide" id="carousel-623693">
+                    <ol class="carousel-indicators">
+                        <li data-slide-to="0" data-target="#carousel-623693" id="question1-Car-li">
+                        </li>
+                        <li data-slide-to="1" data-target="#carousel-623693" id="question2-Car-li">
+                        </li>
+                        <li data-slide-to="2" data-target="#carousel-623693" id="question3-Car-li">
+                        </li>
+                        <li data-slide-to="3" data-target="#carousel-623693" id="question4-Car-li">
+                        </li>
+                        <li data-slide-to="4" data-target="#carousel-623693" id="question5-Car-li">
+                        </li>
+                    </ol>
+
+                    <div class="carousel-inner">
+
+                        <div class="item active" id="question1-Car-div">
+                            <img src="../images/whitePic.png" class="carousel-inner" />
+                            <div>
+
+                                <div class="carousel-caption">
+
+                                    <h4 style="color:black;" id="slide1header">
+                                        Quiz 1
+                                    </h4>
+
+                                    <p id="buttonLocation">
+                                        <button type="button" class="btn btn-default hidden" onclick="checker();" id="quizSubmitButton">Submit</button>
+                                        <button type="button" class="btn btn-default" onclick="populateQuiz1();" id="quizSelectButton">Take It!</button>
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="item" id="question2-Car-div">
+                            <img src="../images/whitePic.png" class="carousel-inner" />
+                            <div>
+
+                                <div class="carousel-caption">
+
+                                    <h4 style="color:black;" id="slideHeader2">
+                                        Quiz 2
+                                    </h4>
+
+                                    <p id="buttonLocation">
+                                        <button type="button" class="btn btn-default hidden" onclick="checker();" id="quizSubmitButton">Submit</button>
+                                        <button type="button" class="btn btn-default" onclick="populateQuiz2();" id="quizSelectButton">Take It!</button>
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="item" id="question3-Car-div">
+                            <img src="../images/whitePic.png" class="carousel-inner" />
+                            <div>
+
+                                <div class="carousel-caption">
+
+                                    <h4 style="color:black;" id="slideHeader3">
+                                        Quiz 3
+                                    </h4>
+
+                                    <p id="buttonLocation">
+                                        <button type="button" class="btn btn-default hidden" onclick="checker();" id="quizSubmitButton">Submit</button>
+                                        <button type="button" class="btn btn-default" onclick="populateQuiz3();" id="quizSelectButton">Take It!</button>
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="item" id="question4-Car-div">
+                            <img src="../images/whitePic.png" class="carousel-inner" />
+                            <div>
+
+                                <div class="carousel-caption">
+
+                                    <h4 style="color:black;" id="slideHeader4">
+                                        Quiz 4
+                                    </h4>
+
+                                    <p id="buttonLocation">
+                                        <button type="button" class="btn btn-default hidden" onclick="checker();" id="quizSubmitButton">Submit</button>
+                                        <button type="button" class="btn btn-default" onclick="populateQuiz4();" id="quizSelectButton">Take It!</button>
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="item" id="question5-Car-div">
+                            <img src="../images/whitePic.png" class="carousel-inner" />
+                            <div>
+
+                                <div class="carousel-caption">
+
+                                    <h4 style="color:black;" id="slideHeader5">
+                                        Quiz 5
+                                    </h4>
+
+                                    <p id="buttonLocation">
+                                        <button type="button" class="btn btn-default hidden" onclick="checker();" id="quizSubmitButton">Submit</button>
+                                        <button type="button" class="btn btn-default" onclick="populateQuiz5();" id="quizSelectButton">Take It!</button>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div> <a class="left carousel-control" onclick="turnerLeft();" href="#carousel-623693" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" onclick="turnerRight();" href="#carousel-623693" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+
+
+
+
+
+
+            </div>
+
+            <div class="col-md-6 column">
+
+                <div class="col-md-6 column">
+
+                    <div class="panel-group" id="panel-673356">
+
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                                <a class="panel-title collapsed" onclick="alert('Adding quizes is not currently available')" href="#panel-element-361773">Add Quiz</a>
+                            </div>
+
+                            <div id="panel-element-361773" class="panel-collapse collapse">
+
+                                <div class="panel-body">
+
+                                    <form role="form">
+
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1" class="hidden">Password</label><input type="password" class="hidden" id="exampleInputPassword1" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="questionInput">Question</label><input type="text" required class="form-control" id="questionInput" placeholder="Enter Question" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="answerInput">Answer</label><input type="text" required class="form-control" id="answerInput" placeholder="Enter Answer" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="backgroundImg">Image</label><input type="text" class="form-control" id="backgroundImg" placeholder="Enter Image URL" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="quizTheme">Image</label><input type="text" required class="form-control" id="quizTheme" placeholder="Quiz Theme" />
+                                        </div>
+
+                                        <button type="button" class="btn btn-default">Create</button>
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a class="panel-title" data-toggle="collapse" data-parent="#panel-673356" href="#panel-element-822468">Edit Quiz</a>
+                            </div>
+                            <div id="panel-element-822468" class="panel-collapse in">
+                                <div class="panel-body">
+
+                                    <form role="form">
+
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1" class="hidden">Password</label><input type="password" class="hidden" id="exampleInputPassword1" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="questionInput">Question</label><input type="text" required class="form-control" id="questionInput" placeholder="Enter Question" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="answerInput">Answer</label><input type="text" required class="form-control" id="answerInput" placeholder="Enter Answer" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="backgroundImg">Image</label><input type="text" class="form-control" id="backgroundImg" placeholder="Enter Image URL" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="quizTheme">Image</label><input type="text" required class="form-control" id="quizTheme" placeholder="Quiz Theme" />
+                                        </div>
+
+                                        <button type="button" class="btn btn-default">Modify</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+</div>
+
+        <script src="../scripts/jquery-1.9.0.js"></script>
+        <script src="../scripts/myJquery.js"></script>
+        <script src="../scripts/bootstrap.js"></script>
+        <script src="../scripts/MyJs.js"></script>
+</body>
+
+
+</html>
